@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Swiper</title>
+<div class="swiper-container">
+  <div id="fullscreen-btn" class="fullscreen-icon" onclick="toggleFullscreen()">⛶</div>
+  <img id="current-image" src="image1.jpg">
+  <div class="button-container">
+    <button id="prev-btn" class="btn" style="display: none;" onclick="prevImage()">Prev</button>
+    <span class="count" id="image-count">1 of 20</span>
+    <button id="next-btn" class="btn" onclick="nextImage()">Next</button>
+  </div>
+</div>
+
+<!-- Include Hammer.js -->
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+
+<style>
+  .swiper-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.fullscreen-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 4px;
+}
+
+.fullscreen-mode {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.rotate {
+  transform: rotate(90deg);
+  width: auto;
+  height: 100%;
+}
+
+</style>
+
+<script>
+  let currentIndex = 0;
+let isFullscreen = false;
+const totalImages = 20;
+const imageElement = document.getElementById('current-image');
+const imageCountElement = document.getElementById('image-count');
+const fullscreenBtn = document.getElementById('fullscreen-btn');
+const swiperContainer = document.querySelector('.swiper-container');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+
+// Update the image and counter
+function updateImage() {
+  imageElement.src = `image${currentIndex + 1}.jpg`;
+  imageCountElement.textContent = `${currentIndex + 1} of ${totalImages}`;
+  prevBtn.style.display = currentIndex === 0 ? 'none' : 'inline';
+  nextBtn.style.display = currentIndex === totalImages - 1 ? 'none' : 'inline';
+}
+
+function prevImage() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateImage();
+  }
+}
+
+function nextImage() {
+  if (currentIndex < totalImages - 1) {
+    currentIndex++;
+    updateImage();
+  }
+}
+
+function toggleFullscreen() {
+  if (!isFullscreen) {
+    swiperContainer.classList.add('fullscreen');
+    fullscreenBtn.textContent = '✖';
+    imageElement.classList.add('fullscreen-mode');
+    if (window.innerWidth <= 430) {
+      imageElement.classList.add('rotate');
+      prevBtn.classList.add('hidden');
+      nextBtn.classList.add('hidden');
+    }
+    isFullscreen = true;
+  } else {
+    swiperContainer.classList.remove('fullscreen');
+    fullscreenBtn.textContent = '⛶';
+    imageElement.classList.remove('fullscreen-mode');
+    imageElement.classList.remove('rotate');
+    prevBtn.classList.remove('hidden');
+    nextBtn.classList.remove('hidden');
+    isFullscreen = false;
+  }
+}
+
+updateImage();
+
+// Add swipe support using Hammer.js
+const hammer = new Hammer(swiperContainer);
+
+hammer.on('swipeleft', function() {
+  nextImage();
+});
+
+hammer.on('swiperight', function() {
+  prevImage();
+});
+
+</script>

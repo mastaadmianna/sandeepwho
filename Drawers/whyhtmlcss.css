@@ -1,0 +1,478 @@
+@font-face {
+  font-family: 'Trap';
+  src: url('/fonts/Trap-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Trap';
+  src: url('/fonts/Trap-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Trap';
+  src: url('/fonts/Trap-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Trap';
+  src: url('/fonts/Trap-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Trap';
+  src: url('/fonts/Trap-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Trap';
+  src: url('/fonts/Trap-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Trap';
+  src: url('/fonts/Trap-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+:root {
+--font-Trap: 'Trap', sans-serif;
+-webkit-tap-highlight-color: transparent;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3f3f3f;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #212121;
+}
+
+.frame-child {
+  width: 36px;
+  position: relative;
+  height: 36px;
+  object-fit: cover;
+}
+.why-i-code {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  font-family: inherit;
+}
+.close-icon {
+  position: absolute;
+  height: 58.33%;
+  width: 58.33%;
+  top: 20.83%;
+  right: 20.83%;
+  bottom: 20.83%;
+  left: 20.83%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.close {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  width: 24px;
+  position: relative;
+  height: 24px;
+}
+.frame-parent {
+  width: 100%;
+  border-bottom: 1px solid var(--color-darkslategray);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--padding-xs) var(--padding-base);
+  max-width: 864px;
+  z-index: 100;
+  position: sticky;
+  top: 0;
+  background-color: #030800;
+}
+.a-website-created,
+.demonstrating-my-skills,
+.heres-why-i {
+  align-self: stretch;
+  position: relative;
+  letter-spacing: 0.01em;
+  line-height: 150%;
+}
+.a-website-created,
+.demonstrating-my-skills {
+  font-weight: 800;
+}
+.a-website-created {
+  font-weight: 600;
+  color: var(--color-darkgray);
+}
+.demonstrating-my-skills-parent {
+  gap: var(--gap-9xs);
+}
+.demonstrating-my-skills-parent,
+.frame-container,
+.heres-why-i-prefer-coding-my-parent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.frame-container {
+  gap: 28px;
+  font-size: var(--font-size-base);
+}
+.heres-why-i-prefer-coding-my-parent {
+  gap: var(--gap-xs);
+  font-size: var(--font-size-5xl);
+}
+.this-has-become {
+  position: relative;
+  letter-spacing: 0.01em;
+  line-height: 150%;
+  font-weight: 600;
+  color: var(--color-orangered);
+}
+.portfolio-of-22 {
+  align-self: stretch;
+  font-size: var(--font-size-5xl);
+  text-decoration: underline;
+}
+.i-was-still,
+.portfolio-of-22,
+.portfolio-website {
+  position: relative;
+  letter-spacing: 0.01em;
+  line-height: 150%;
+}
+.i-was-still {
+  align-self: stretch;
+  font-weight: 600;
+}
+.portfolio-website {
+  text-decoration: underline;
+  font-weight: 700;
+  color: inherit;
+}
+.open-in-new-icon {
+  position: absolute;
+  height: 75%;
+  width: 75%;
+  top: 12.5%;
+  right: 12.5%;
+  bottom: 12.5%;
+  left: 12.5%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.open-in-new {
+  text-decoration: none;
+  width: 24px;
+  position: relative;
+  height: 24px;
+}
+.portfolio-of-22-parent,
+.portfolio-website-parent {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.portfolio-website-parent {
+  flex-direction: row;
+  gap: var(--gap-5xs);
+  color: var(--color-orangered);
+}
+.portfolio-of-22-parent {
+  flex-direction: column;
+  gap: var(--gap-xs);
+}
+.drop-a-message,
+.portfolio-of-24 {
+  position: relative;
+  letter-spacing: 0.01em;
+}
+.portfolio-of-24 {
+  font-size: var(--font-size-5xl);
+  text-decoration: underline;
+  line-height: 150%;
+}
+.drop-a-message {
+  margin: 0;
+  flex: 1;
+  font-size: inherit;
+  font-weight: 700;
+  font-family: inherit;
+}
+.drop-a-message-theres-always-wrapper {
+  align-self: stretch;
+  box-shadow: 0 4px 0#fff;
+  background-color: var(--color-orangered);
+  border: 1px solid var(--color-white);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-5xs) var(--padding-xs);
+}
+.frame-wrapper {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.group-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-9xs-2);
+  background-color: #ffffff;
+  width: 32px;
+  height: 32px;
+}
+.vector-icon {
+  position: absolute;
+  top: calc(50% - 9.2px);
+  left: calc(50% - 9.2px);
+  width: 18.5px;
+  height: 18.5px;
+}
+.rectangle-parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+}
+.group-wrapper {
+  text-decoration: none;
+  width: 32px;
+  position: relative;
+  border-radius: var(--br-9xs-2);
+  background-color: var(--color-royalblue);
+  height: 32px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.sandeep-devanpalli {
+  text-decoration: underline;
+  position: relative;
+  letter-spacing: 0.01em;
+  font-weight: 600;
+  color: inherit;
+}
+.frame-parent2,
+.sandeep-devanpalli-parent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-5xs);
+}
+.frame-parent2 {
+  align-self: stretch;
+  gap: var(--gap-xs);
+}
+
+.frame-parent2,
+.frame-parent4:hover {
+  cursor: pointer;
+}
+
+.gmail-icon-2020-1-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-9xs-2);
+  background-color: #ffffff;
+  width: 32px;
+  height: 32px;
+}
+.vector-icon1 {
+  position: absolute;
+  height: 52.5%;
+  width: 70%;
+  top: 23.75%;
+  right: 15%;
+  bottom: 23.75%;
+  left: 15%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.gmail-icon-2020-1-wrapper {
+  text-decoration: none;
+  width: 32px;
+  position: relative;
+  border-radius: var(--br-9xs-2);
+  background-color: var(--color-white);
+  height: 32px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.download-icon {
+  position: relative;
+  margin: 0 auto;
+  top: 5%;
+  width: 25.6px;
+  height: 25.6px;
+}
+.download-wrapper {
+  cursor: pointer;
+  border: 1.6px solid #ffffff;
+  padding: 0;
+  background-color: #ffffff;
+  width: 32px;
+  position: relative;
+  border-radius: var(--br-9xs-2);
+  box-sizing: border-box;
+  height: 32px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.get-my-resume {
+  text-decoration: none;
+  position: relative;
+  letter-spacing: 0.01em;
+  font-weight: 600;
+  color: inherit;
+}
+.frame-parent4 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-xs);
+  color: var(--color-orangered);
+}
+.frame-parent1 {
+  gap: var(--gap-13xl);
+  text-align: left;
+  font-size: var(--font-size-sm);
+}
+.frame-div,
+.frame-group,
+.frame-parent1 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.frame-div {
+  gap: var(--gap-13xl);
+  text-align: center;
+}
+.frame-group {
+  gap: var(--gap-21xl);
+}
+.whyhtmlcss,
+.whyhtmlcss-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.whyhtmlcss-inner {
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 864px;
+  z-index: 0;
+}
+.whyhtmlcss {
+  position: relative;
+  background-color: var(--color-gray);
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--padding-xl) var(--padding-61xl);
+  box-sizing: border-box;
+  gap: var(--gap-21xl);
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+  font-family: var(--font-trap);
+}
+@media screen and (max-width: 1200px) {
+  .whyhtmlcss {
+    width: auto;
+    align-self: unset;
+    padding-left: var(--padding-133xl);
+    padding-right: var(--padding-133xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 960px) {
+  .whyhtmlcss {
+    width: auto;
+    align-self: unset;
+  }
+}
+@media screen and (max-width: 430px) {
+  .frame-parent {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+  }
+  .drop-a-message {
+    flex: 1;
+  }
+  .get-my-resume,
+  .sandeep-devanpalli {
+    font-size: var(--font-size-sm);
+  }
+  .frame-div,
+  .frame-parent1 {
+    align-self: stretch;
+    width: auto;
+  }
+  .whyhtmlcss-inner {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+  }
+  .whyhtmlcss {
+    width: auto;
+    align-self: unset;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+}

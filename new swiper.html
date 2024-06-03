@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Swiper</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    max-width: 864px;
+    height: auto;
+    margin: auto;
+  }
+  .swiper-container {
+    position: relative;
+  width: 100%;
+  height: auto;
+  }
+  .swiper-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;          
+    margin-top: 16px;
+  }
+  .btn {
+    border-radius: 32px;
+    height: 48px;
+    padding: 0 24px;
+    background-color: #ffffff;
+    color: #3F1504;
+    border: 2px solid #FC560F;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #FFFCF8;
+    color: #FC560F;
+  }
+
+  .btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  .count {
+    margin: 0 16px;
+  }
+  .fullscreen-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.1);
+    /*border: 2px solid #FC560F;*/
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /*.fullscreen-icon {
+    position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 4px;
+  }*/
+  .fullscreen-mode {
+  width: 100% !important;
+  height: auto !important;
+}
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background: black;*/
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  .close-icon {
+    width: 20px;
+    height: 20px;
+    /*background-image: url('close-icon.png');
+    background-size: cover;*/
+  }
+  
+</style>
+</head>
+<body>
+
+<div class="swiper-container" id="swiper-container">
+  <img id="current-image">
+  <div class="button-container">
+    <button id="prev-btn" class="btn" style="display: none;" onclick="prevImage()">Prev</button>
+    <span class="count" id="image-count">1 of 20</span>
+    <button id="next-btn" class="btn" onclick="nextImage()">Next</button>
+  </div>
+  <div class="fullscreen-btn" id="fullscreen-btn" onclick="toggleFullscreen()">
+    <div class="fullscreen-icon" id="fullscreen-icon">
+      <img src="public/Fullscreen icon.png">
+    </div>
+  </div>
+</div>
+
+<script>
+  const totalImages = 20;
+  let currentImageIndex = 0;
+  const currentImageElement = document.getElementById('current-image');
+  const imageCountElement = document.getElementById('image-count');
+  const prevButton = document.getElementById('prev-btn');
+  const nextButton = document.getElementById('next-btn');
+  const swiperContainer = document.getElementById('swiper-container');
+  const fullscreenButton = document.getElementById('fullscreen-btn');
+  const fullscreenIcon = document.getElementById('fullscreen-icon');
+
+  showImage(currentImageIndex);
+  updateImageCount();
+
+  function showImage(index) {
+    currentImageElement.src = `/Swipertest/image${index + 1}.jpg`;
+  }
+
+  function updateImageCount() {
+    imageCountElement.textContent = `${currentImageIndex + 1} of ${totalImages}`;
+  }
+
+  function prevImage() {
+    if (currentImageIndex > 0) {
+      currentImageIndex--;
+      showImage(currentImageIndex);
+      updateImageCount();
+      if (currentImageIndex === 0) {
+        prevButton.style.display = 'none';
+      }
+      nextButton.style.display = 'inline-block';
+    }
+  }
+
+  function nextImage() {
+    if (currentImageIndex < totalImages - 1) {
+      currentImageIndex++;
+      showImage(currentImageIndex);
+      updateImageCount();
+      if (currentImageIndex === totalImages - 1) {
+        nextButton.style.display = 'none';
+      }
+      prevButton.style.display = 'inline-block';
+    }
+  }
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowLeft') {
+      prevImage();
+    } else if (event.key === 'ArrowRight') {
+      nextImage();
+    }
+  });
+  
+  /*function toggleFullscreen() {
+  if (!isFullscreen) {
+    swiperContainer.classList.add('fullscreen');
+    fullscreenBtn.textContent = '✖';
+    imageElement.classList.add('fullscreen-mode');
+    if (window.innerWidth <= 430) {
+      imageElement.classList.add('rotate');
+      prevBtn.classList.add('hidden');
+      nextBtn.classList.add('hidden');
+    }
+    isFullscreen = true;
+  } else {
+    swiperContainer.classList.remove('fullscreen');
+    fullscreenBtn.textContent = '⛶';
+    imageElement.classList.remove('fullscreen-mode');
+    imageElement.classList.remove('rotate');
+    prevBtn.classList.remove('hidden');
+    nextBtn.classList.remove('hidden');
+    isFullscreen = false;
+  }
+}*/
+ 
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      swiperContainer.requestFullscreen();
+      fullscreenIcon.className = 'close-icon';
+      if (window.innerWidth <= 430) {
+      imageElement.classList.add('rotate');
+      swiperContainer.requestFullscreen();
+      fullscreenIcon.className = 'close-icon';
+    }
+  }
+    else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+        fullscreenIcon.className = 'fullscreen-icon';
+      }
+    }
+  }
+
+  swiperContainer.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+      fullscreenIcon.className = 'fullscreen-icon';
+    }
+  });
+
+  // Swipe functionality
+  let startX;
+
+  function handleSwipeStart(event) {
+    startX = event.touches ? event.touches[0].clientX : event.clientX;
+  }
+
+  function handleSwipeMove(event) {
+    if (!startX) return;
+    let endX = event.touches ? event.touches[0].clientX : event.clientX;
+    let diffX = startX - endX;
+
+    if (Math.abs(diffX) > 50) {
+      if (diffX > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+      startX = null;
+    }
+  }
+
+  swiperContainer.addEventListener('mousedown', handleSwipeStart);
+  swiperContainer.addEventListener('mousemove', handleSwipeMove);
+  swiperContainer.addEventListener('mouseup', () => startX = null);
+  swiperContainer.addEventListener('touchstart', handleSwipeStart);
+  swiperContainer.addEventListener('touchmove', handleSwipeMove);
+  swiperContainer.addEventListener('touchend', () => startX = null);
+</script>
+
+</body>
+</html>
